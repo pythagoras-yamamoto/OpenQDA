@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KJ法ワークスペース</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">KJ法 <span>workspace</span></div>
+
+    <nav class="tabs" id="tabs">
+      <button type="button" data-view="source" class="active" disabled>切片</button>
+      <button type="button" data-view="diagram" disabled>図解</button>
+      <button type="button" data-view="story" disabled>ストーリー</button>
+    </nav>
+
+    <div class="header-actions">
+      <button type="button" id="copy-cards" class="ghost" hidden>切片を一括コピー</button>
+      <button type="button" id="analyze" class="primary" hidden>グループ化へ進む</button>
+    </div>
+  </header>
+
+  <div id="status" class="status" hidden></div>
+
+  <main>
+    <!-- 取り込み -->
+    <section id="view-import" class="view active">
+      <div class="import-card">
+        <h1>インタビュー・議事録を読み込む</h1>
+        <p class="lead">テキストを読み込むと、重要な発言に「下線」を引き、切片(カード)を自動で作成します。</p>
+
+        <label class="file-label">
+          <input type="file" id="file" accept=".txt,.md" />
+        </label>
+
+        <textarea id="input" rows="12" placeholder="発言録を貼り付けてください&#10;例:&#10;00:01:12 佐々木: 自分の好みの音があるかどうかが一番大事だと思っています。"></textarea>
+
+        <button type="button" id="extract" class="primary large">切片を作成</button>
+      </div>
+    </section>
+
+    <!-- 切片(左:元データ / 右:カード) -->
+    <section id="view-source" class="view workspace">
+      <div class="pane">
+        <div class="pane-head">
+          <span>元データ</span>
+          <span class="pane-meta" id="unit-meta"></span>
+        </div>
+        <div class="pane-body" id="transcript"></div>
+      </div>
+
+      <div class="pane">
+        <div class="pane-head">
+          <span>切片データ</span>
+          <label class="fav-toggle"><input type="checkbox" id="fav-only" /> お気に入りのみ表示</label>
+        </div>
+        <div class="pane-body" id="cards"></div>
+      </div>
+    </section>
+
+    <!-- 図解 -->
+    <section id="view-diagram" class="view">
+      <div class="panel">
+        <div class="legend">
+          <span><i class="line-causal"></i>因果・手段</span>
+          <span><i class="line-sequential"></i>前後</span>
+          <span><i class="line-similar"></i>類似</span>
+          <span><i class="line-contradictory"></i>対立</span>
+        </div>
+        <div id="diagram" class="diagram"></div>
+        <ul id="relations"></ul>
+      </div>
+    </section>
+
+    <!-- ストーリー -->
+    <section id="view-story" class="view">
+      <div class="panel">
+        <h2>ストーリーのアウトライン</h2>
+        <div id="outline" class="outline"></div>
+      </div>
+      <div class="panel">
+        <h2>ストーリーライン</h2>
+        <p id="narrative" class="narrative"></p>
+      </div>
+      <div class="panel">
+        <h2>検証・考察</h2>
+        <div id="verification" class="verification"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

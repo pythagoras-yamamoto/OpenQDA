@@ -1,0 +1,17 @@
+# 依存関係
+node_modules/
+
+# APIキーを含むので絶対にコミットしない(.env.example のみ追跡する)
+.env
+.env.*
+!.env.example
+
+# ログ
+*.log
+npm-debug.log*
+
+# OS / エディタ
+.DS_Store
+.vscode/
+.idea/
+*.swp
