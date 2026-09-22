@@ -1,5 +1,5 @@
 {
-  "name": "kj-jev",
+  "name": "openqda",
   "version": "1.0.0",
   "description": "議事録からKJ法を再現するローカルWebアプリ。グルーピングと関係性判定はjev、要約・表札・文章化はClaudeが担う",
   "type": "module",

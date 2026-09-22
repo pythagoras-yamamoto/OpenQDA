@@ -43,5 +43,5 @@ app.post("/api/analyze", (req, res) => {
 
 const PORT = process.env.PORT || 3200;
 app.listen(PORT, () => {
-  console.log(`kj-jev server running at http://localhost:${PORT}`);
+  console.log(`OpenQDA server running at http://localhost:${PORT}`);
 });
